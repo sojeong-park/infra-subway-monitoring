@@ -3,27 +3,26 @@ plugins {
 	id 'io.spring.dependency-management' version '1.0.10.RELEASE'
 	id 'java'
 }
-
 group = 'nextstep'
 version = '0.0.1-SNAPSHOT'
 sourceCompatibility = '1.8'
-
 repositories {
 	mavenCentral()
 	maven { url 'https://repo.spring.io/milestone' }
 	maven { url 'https://repo.spring.io/snapshot' }
 }
-
 dependencies {
 	// spring
 	implementation 'org.springframework.boot:spring-boot-starter-web'
 	implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
+	implementation 'org.springframework.boot:spring-boot-starter-aop'
 
 	// handlebars
 	implementation 'pl.allegro.tech.boot:handlebars-spring-boot-starter:0.3.0'
 
 	// log
 	implementation 'net.rakugakibox.spring.boot:logback-access-spring-boot-starter:2.7.1'
+	implementation 'net.logstash.logback:logstash-logback-encoder:6.1'
 
 	// jgraph
 	implementation 'org.jgrapht:jgrapht-core:1.0.1'
@@ -31,15 +30,10 @@ dependencies {
 	// jwt
 	implementation 'io.jsonwebtoken:jjwt:0.9.1'
 
-	testImplementation 'org.junit.jupiter:junit-jupiter-logback.api'
-	testImplementation('org.springframework.boot:spring-boot-starter-test') {
-		exclude group: 'org.junit.vintage', module: 'junit-vintage-engine'
-	}
-	implementation("net.logstash.logback:logstash-logback-encoder:6.1")
-
-	implementation("org.springframework.boot:spring-boot-starter-actuator")
-	implementation("org.springframework.cloud:spring-cloud-starter-aws:2.2.1.RELEASE")
-	implementation("io.micrometer:micrometer-registry-cloudwatch")
+	// cloudwatch
+	implementation 'org.springframework.boot:spring-boot-starter-actuator'
+	implementation 'org.springframework.cloud:spring-cloud-starter-aws:2.2.1.RELEASE'
+	implementation 'io.micrometer:micrometer-registry-cloudwatch'
 
 	testImplementation 'io.rest-assured:rest-assured:3.3.0'
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'
@@ -47,7 +41,6 @@ dependencies {
 	runtimeOnly 'com.h2database:h2'
 	implementation("mysql:mysql-connector-java")
 }
-
 test {
 	useJUnitPlatform()
 }
