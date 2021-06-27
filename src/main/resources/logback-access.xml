@@ -2,8 +2,8 @@
     <statusListener class="ch.qos.logback.core.status.OnConsoleStatusListener" />
 
     <!-- 로그 위치 -->
-    <property name="LOG_DIR" value="/home/ubuntu/log/" />
-    <property name="LOG_PATH_NAME" value="${LOG_DIR}/attostack-access.log" />
+    <property name="LOG_DIR" value="/home/ubuntu/log" />
+    <property name="LOG_PATH_NAME" value="${LOG_DIR}/access.log" />
 
     <appender name="FILE" class="ch.qos.logback.core.rolling.RollingFileAppender">
         <file>${LOG_PATH_NAME}</file>
